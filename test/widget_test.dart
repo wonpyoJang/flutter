@@ -26,5 +26,16 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('2'), findsOneWidget);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.remove));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('2'), findsNothing);
+
+    // AppBar 제목 확인
+    expect(find.text('PlayGround'), findsOneWidget);
   });
 }
